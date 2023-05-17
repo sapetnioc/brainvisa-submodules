@@ -34,10 +34,6 @@
 	path = brainrat-private
 	url = https://bioproj.extra.cea.fr/git/brainrat-private
 	branch = master
-[submodule "brainvisa-cmake"]
-	path = brainvisa-cmake
-	url = https://github.com/brainvisa/brainvisa-cmake
-	branch = master
 [submodule "brainvisa-share"]
 	path = brainvisa-share
 	url = https://github.com/brainvisa/brainvisa-share
