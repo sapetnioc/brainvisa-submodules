@@ -5,3 +5,13 @@ Experimental project to test downloading a predefined set of BrainVISA component
 git clone https://github.com/sapetnioc/brainvisa-submodules /somewhere/src
 git -C /somewhere/src submodule update --init --recursive
 ```
+
+## Automatic setup of a build environment using Conda
+
+```
+casaconda=/somewhere
+mkdir "$casaconda"
+git clone https://github.com/sapetnioc/brainvisa-submodules "$casaconda/src"
+git -C "$casaconda/src" submodule update --init --recursive
+"$casaconda/src/casa-distro/conda/setup_conda" "$casaconda"
+```
