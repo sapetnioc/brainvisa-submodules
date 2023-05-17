@@ -178,3 +178,7 @@
 	path = whasa-nonfree
 	url = https://github.com/cati-neuroimaging/whasa-nonfree
 	branch = master
+[submodule "brainvisa-cmake"]
+	path = brainvisa-cmake
+	url = https://github.com/brainvisa/brainvisa-cmake
+	branch = no_bv_env
