@@ -54,10 +54,6 @@
 	path = capsul
 	url = https://github.com/populse/capsul
 	branch = master
-[submodule "casa-distro"]
-	path = casa-distro
-	url = https://github.com/brainvisa/casa-distro
-	branch = master
 [submodule "cati-auth"]
 	path = cati-auth
 	url = https://github.com/cati-neuroimaging/cati-auth
