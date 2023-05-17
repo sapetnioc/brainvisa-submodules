@@ -13,5 +13,6 @@ casaconda=/somewhere
 mkdir "$casaconda"
 git clone https://github.com/sapetnioc/brainvisa-submodules "$casaconda/src"
 git -C "$casaconda/src" submodule update --init --recursive
+git -C "$casaconda/src/casa-distro" checkout toolboxes
 "$casaconda/src/casa-distro/conda/setup_conda" "$casaconda"
 ```
