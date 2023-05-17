@@ -178,3 +178,7 @@
 	path = brainvisa-cmake
 	url = https://github.com/brainvisa/brainvisa-cmake
 	branch = no_bv_env
+[submodule "casa-distro"]
+	path = casa-distro
+	url = https://github.com/brainvisa/casa-distro
+	branch = toolboxes
