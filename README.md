@@ -16,3 +16,10 @@ git clone https://github.com/sapetnioc/casaconda "$casaconda"
 # Start compilation
 "$casaconda/bv_env" bv_maker
 ```
+
+Until compilation is entirely fixed, errors can be found by compiling as much as possible in parallel an restarting `make` in a single process:
+```
+cd "$casaconda/build"
+"$casaconda/bv_env" make -j8 -k
+"$casaconda/bv_env" make
+```
