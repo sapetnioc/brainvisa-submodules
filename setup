@@ -1,7 +1,7 @@
 #!/bin/sh
 
-HERE=$( dirname $(readlink -f "$0") )
-SRC="$HERE/src"
+export CASA=$( dirname $(readlink -f "$0") )
+SRC="$CASA/src"
 
 set -e
 set -x
@@ -52,4 +52,19 @@ if [ ! -e "$SRC" ]; then
     git clone -b master https://bioproj.extra.cea.fr/git/brainvisa-commu/web.git "$SRC/web"
     git clone -b master https://github.com/cati-neuroimaging/whasa-gpl.git "$SRC/whasa-gpl"
     git clone -b master https://github.com/cati-neuroimaging/whasa-nonfree.git "$SRC/whasa-nonfree"
+fi
+
+
+if [ ! -e "$CASA/Miniforge3-Linux-x86_64.sh" ]; then
+    wget -O "$CASA/Miniforge3-Linux-x86_64.sh" https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+fi
+
+
+if [ ! -e "$CASA/conda" ]; then
+    mkdir "$CASA/conda"
+    sh "$CASA/Miniforge3-Linux-x86_64.sh" -u -b -p "$CASA/conda"
+    "$CASA/conda/bin/conda" install -y mamba
+    $CASA/setup_run_conda
+    $CASA/setup_run_compiled
+    $CASA/setup_dev_conda
 fi
