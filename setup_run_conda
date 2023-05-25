@@ -14,8 +14,6 @@ if [ -e $CASA/conda/bin/git ]; then
     exit 0
 fi
 
-conda="$CASA/conda/bin/mamba"
-
 build_dependencies=(
     # General build dependencies (notably useful for pip-compiled packages)
     gcc
@@ -138,7 +136,7 @@ headless_anatomist_dependencies=(
     # xvfb
 )
 
-$conda install -y ${build_dependencies[@]} ${fsl_runtime_dependencies[@]} ${matlab_runtime_dependencies[@]} ${generally_useful_packages[@]} ${headless_anatomist_dependencies[@]}
+"$conda" install $conda_install ${build_dependencies[@]} ${fsl_runtime_dependencies[@]} ${matlab_runtime_dependencies[@]} ${generally_useful_packages[@]} ${headless_anatomist_dependencies[@]}
 
 
 pip_installed_dependencies=(
@@ -288,4 +286,4 @@ brainvisa_shared_library_dependencies=(
     libzstd1
 )
 
-"$conda" install -y ${pip_installed_dependencies[@]} ${pip_packages_runtime_dependencies[@]} ${brainvisa_python_runtime_dependencies[@]}
+"$conda" install $conda_install ${pip_installed_dependencies[@]} ${pip_packages_runtime_dependencies[@]} ${brainvisa_python_runtime_dependencies[@]}

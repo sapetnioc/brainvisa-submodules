@@ -55,15 +55,31 @@ if [ ! -e "$SRC" ]; then
 fi
 
 
-if [ ! -e "$CASA/Miniforge3-Linux-x86_64.sh" ]; then
-    wget -O "$CASA/Miniforge3-Linux-x86_64.sh" https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+installer_url=https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+# installer_url=https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+# installer_url=https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+installer=$(echo $installer_url | awk '{split($0, s, "/"); print(s[length(s)])}')
+if [ ! -e "$CASA/$installer" ]; then
+    wget -O "$CASA/$installer" $installer_url
 fi
 
 
 if [ ! -e "$CASA/conda" ]; then
     mkdir "$CASA/conda"
-    sh "$CASA/Miniforge3-Linux-x86_64.sh" -u -b -p "$CASA/conda"
-    "$CASA/conda/bin/conda" install -y mamba
+    sh "$CASA/$installer" -u -b -p "$CASA/conda"
+    if [ ! "$CASA/conda/bin/mamba" ]; then
+        # If mamba is installed, we use conda-forge
+        export conda="$CASA/conda/bin/mamba"
+        export conda_install="-y"
+        # Use most recent glibc ABI (the one used by conda-forge to compile Qt)
+        "$conda" install -y sysroot-conda_2_28-x86_64
+    else
+        # mamba is not installed, we use anaconda
+        export conda="$CASA/conda/bin/conda"
+        export conda_install="-y --solver=libmamba"
+        # Install packages to use mamba to find packages
+        "$conda" install -y -n base conda-libmamba-solver
+    fi
     $CASA/setup_run_conda
     $CASA/setup_run_compiled
     $CASA/setup_dev_conda

@@ -7,8 +7,6 @@
 set -x
 set -e
 
-conda="$CASA/conda/bin/mamba"
-
 if [ -e "$CASA/conda/bin/gdb" ]; then
     # if gdb is installed, we assume that this script has already been
     # executed.
@@ -121,4 +119,4 @@ brainvisa_standard_dev_dependencies=(
     #! zlib1g-dev
 )
 
-$conda install -y ${version_control_packages[@]} ${toolchain_packages[@]} ${documentation_building_packages[@]} ${brainvisa_standard_dev_dependencies[@]}
+$conda install $conda_install ${version_control_packages[@]} ${toolchain_packages[@]} ${documentation_building_packages[@]} ${brainvisa_standard_dev_dependencies[@]}
