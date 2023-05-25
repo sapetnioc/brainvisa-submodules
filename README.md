@@ -11,14 +11,13 @@ git -C /somewhere/src submodule update --init --recursive
 ```
 # Select a directory
 casaconda=/somewhere
-mkdir "$casaconda"
 
-# Download all sources
-git clone https://github.com/sapetnioc/brainvisa-submodules "$casaconda/src"
-"$casaconda/src/setup_src"
+# Download project with config (and source list)
+git clone https://github.com/sapetnioc/brainvisa-submodules "$casaconda"
 
-# Build the image and install dependencies
-"$casaconda/src/casa-distro/conda/setup_conda" "$casaconda"
+# Download sources and setup conda directory
+"$casaconda/setup"
+
+# Start compilation
+"$casaconda/bv_env" bv_maker
 ```
-
-This creates the full environment and start a shell in the container where one can launch `bv_maker`. At the time of this writing, `bv_maker` has still to be fxed to work in this environment ; after the first execution the command cannot be run. Until I fix it, I recommend to build using directly `make` in `/casa/build`.
