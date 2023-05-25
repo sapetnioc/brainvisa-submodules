@@ -3,17 +3,28 @@ Experimental project to test BrainVISA compilation using a build environment set
 
 ## Setup of a build environment using Conda
 
+Select a directory
 ```
-# Select a directory
 casaconda=/somewhere
+```
 
-# Download project with config (and source list)
+Download project with config (and source list)
+```
 git clone https://github.com/sapetnioc/casaconda "$casaconda"
+```
 
-# Download sources and setup conda directory
+Download sources and setup conda directory
+```
 "$casaconda/setup"
+```
 
-# Start compilation
+Switch `aims-free` to the right branch until we deal with [this PR](https://github.com/brainvisa/aims-free/pull/100)
+```
+git -C "$casaconda/src/aims-free" checkout conda_opengl
+```
+
+Start compilation
+```
 "$casaconda/bv_env" bv_maker
 ```
 
