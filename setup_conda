@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+set -x
+
+export CASA=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+
+if [ ! -e "$CASA/Miniforge3-Linux-x86_64.sh" ]; then
+    wget -O "$CASA/Miniforge3-Linux-x86_64.sh" https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+fi
+
+
+if [ ! -e "$CASA/conda" ]; then
+    mkdir "$CASA/conda"
+    sh "$CASA/Miniforge3-Linux-x86_64.sh" -u -b -p "$CASA/conda"
+    "$CASA/conda/bin/conda" install -y mamba
+    $CASA/src/casa-distro/conda/setup_run_conda
+    $CASA/src/casa-distro/conda/setup_dev_conda
+fi
