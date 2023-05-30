@@ -3,6 +3,8 @@ Experimental project to test BrainVISA compilation using a build environment set
 
 ## Setup of a build environment using Conda
 
+### From scratch
+
 Select a directory
 ```
 casaconda=/somewhere
@@ -18,14 +20,27 @@ Download sources and setup conda directory
 "$casaconda/setup"
 ```
 
-Start compilation
+Build everything
 ```
 "$casaconda/bv_env" bv_maker
 ```
 
-Until compilation is entirely fixed, errors can be found by compiling as much as possible in parallel an restarting `make` in a single process:
+At the time of this writing, documentation building is failing.
+
+### Get already compiled environment
+
+Select a directory
 ```
-cd "$casaconda/build"
-"$casaconda/bv_env" make -j8 -k
-"$casaconda/bv_env" make
+casaconda=/somewhere
+```
+
+Download the directory content (about 12 Gb):
+```
+rsync -a brainvisa@brainvisa.info:casaconda/ "$casaconda/"
+```
+
+## Launch software in an environment
+
+```
+"$casaconda/bv_env" <command...>
 ```
