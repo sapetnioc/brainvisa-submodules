@@ -18,11 +18,6 @@ Download sources and setup conda directory
 "$casaconda/setup"
 ```
 
-Switch `aims-free` to the right branch until we deal with [this PR](https://github.com/brainvisa/aims-free/pull/100)
-```
-git -C "$casaconda/src/aims-free" checkout conda_opengl
-```
-
 Start compilation
 ```
 "$casaconda/bv_env" bv_maker
