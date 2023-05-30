@@ -8,9 +8,9 @@ set -x
 
 if [ ! -e "$SRC" ]; then
     git clone -b master https://bioproj.extra.cea.fr/git/3dns-private "$SRC/3dns-private"
-    git clone -b master https://github.com/brainvisa/aims-free.git "$SRC/aims-free"
+    git clone -b conda_opengl https://github.com/brainvisa/aims-free.git "$SRC/aims-free"
     git clone -b master https://github.com/brainvisa/aims-gpl.git "$SRC/aims-gpl"
-    git clone -b master https://github.com/brainvisa/anatomist-free.git "$SRC/anatomist-free"
+    git clone -b conda_opengl https://github.com/brainvisa/anatomist-free.git "$SRC/anatomist-free"
     git clone -b master https://github.com/brainvisa/anatomist-gpl.git "$SRC/anatomist-gpl"
     git clone -b master https://github.com/brainvisa/axon.git "$SRC/axon"
     git clone -b master https://bioproj.extra.cea.fr/git/bioprocessing "$SRC/bioprocessing"
