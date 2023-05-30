@@ -5,6 +5,11 @@ Experimental project to test BrainVISA compilation using a build environment set
 
 ### From scratch
 
+Install OpenGL dev packages
+```
+sudo apt install libglu1-mesa-dev
+```
+
 Select a directory
 ```
 casaconda=/somewhere
