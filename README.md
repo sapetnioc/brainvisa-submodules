@@ -34,6 +34,11 @@ At the time of this writing, documentation building is failing.
 
 ### Get already compiled environment
 
+Install OpenGL libraries (tested on Ubuntu/Windows-WSL2)
+```
+sudo apt install libgl1-mesa-glx libopengl
+```
+
 Select a directory
 ```
 casaconda=/somewhere
