@@ -22,7 +22,7 @@ git clone https://github.com/sapetnioc/casaconda "$casaconda"
 
 Download sources and setup conda directory
 ```
-"$casaconda/setup"
+"$casaconda/setup_dev"
 ```
 
 Build everything

@@ -7,7 +7,7 @@
 set -x
 set -e
 
-if [ -e $CASA/conda/bin/git ]; then
+if [ -e $CONDA/bin/git ]; then
     # if git is installed, we assume that this script has already been
     # executed.
     echo "setup_run_conda already executed => execution canceled"
