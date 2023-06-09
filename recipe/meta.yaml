@@ -1,0 +1,131 @@
+{% set brainvisa = load_file_data(os.path.join(RECIPE_DIR, 'brainvisa.yaml')) %}
+
+package:
+  name: brainvisa
+  version: {{ brainvisa.version }}
+
+source:
+  # url: https://brainvisa.info/download/conda/brainvisa-{{ brainvisa.version }}.tar.xz
+  # url: file:///home/yann/casaconda/repository/brainvisa-{{ brainvisa.version }}.tar.xz
+  # sha256: {{ brainvisa.sha256 }}
+  path: ../src
+
+build:
+  number: 0
+  # Build only on linux with Python >= 3.9
+  skip: True  # [not linux]
+  skip: True  # [py<39]
+
+
+outputs:
+  - name: brainvisa-base
+    script: install_brainvisa.sh
+    requirements:
+      build:
+        - cmake
+        - make
+        - pkg-config
+
+      run:
+        - font-ttf-noto-emoji
+        - lsb-release
+        - matplotlib 3.4.3
+        - mesa
+        - pyqt
+        - qtconsole
+        - xorg-libx11
+        - pydantic >=1.9
+        - redis-py >=4.2
+        - nipype
+        - dipy
+        - pycryptodome
+        - cryptography  # needed by populse_mia
+        - html2text
+        - openpyxl
+        - paramiko
+        - pillow
+        - requests
+        - six
+        - sqlalchemy
+        - traits
+        - xmltodict
+        - yaml
+        - joblib
+        - configobj
+        - mpi4py
+        - nibabel
+        - pyparsing
+        - pydot
+        - pydicom
+        - cython
+        - xlrd
+        - xlwt
+        - pandas
+        - lark
+        - pyzmq
+        - ipython
+        - nbsphinx
+        - sphinx-gallery
+        - numpy
+        - fastcluster
+        - h5py
+        - scipy
+        - scikit-image
+        - pyopengl
+        - plotly
+        - pcl
+        - celery # used by Capsul v3
+        - pycryptodome
+        - cairo-devel-cos6-x86_64 #? was libcairo2
+        - gdk-pixbuf2-devel-cos6-x86_64 #? was libgdk-pixbuf-2.0-0
+        - libgfortran5
+        - cairo
+        - dcmtk
+        - libgfortran5
+        - mesalib
+        - libglib
+        - libglu
+        - libgomp
+        - hdf5
+        - libjpeg-turbo
+        - jxrlib
+        - libllvm14
+        - netcdf4
+        - openjpeg
+        - libpng
+        - qwt
+        - 'libsigcpp<3'
+        - libsvm
+        - libtiff
+        - libxml2
+        - zstd    
+    about:
+      summary: Software base infrastructure for BrainVISA tools
+      license: GPL
+
+  - name: anatomist
+    script: install_anatomist.sh
+    requirements:
+      build:
+        - cmake
+        - make
+        - pkg-config
+
+      run:
+        - {{ pin_subpackage('brainvisa-base', max_pin='x.x') }}
+    
+    about:
+      summary: Neuroimaging visualization tool for the BrainVISA project
+      license: CeCILL
+
+
+about:
+  home: https://brainvisa.info
+  license: GPL
+  summary: Neuroimaging software platform for mass data analysis
+  description: |
+    BrainVISA provides a complete, modular, infrastructure for neuroimaging
+    software. It helps organizing heterogeneous software and data and
+    provides a common general graphical interface for users.
+    BrainVISA is thus a set of tools rather than a single software.
+
