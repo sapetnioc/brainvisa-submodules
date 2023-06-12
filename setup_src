@@ -1,5 +1,5 @@
 # git clone -b master https://bioproj.extra.cea.fr/git/3dns-private "$CASA_SRC/3dns-private"
-git clone -b master https://github.com/brainvisa/aims-free.git "$CASA_SRC/aims-free"
+git clone -b conda https://github.com/brainvisa/aims-free.git "$CASA_SRC/aims-free"
 git clone -b master https://github.com/brainvisa/aims-gpl.git "$CASA_SRC/aims-gpl"
 git clone -b qwt6 https://github.com/brainvisa/anatomist-free.git "$CASA_SRC/anatomist-free"
 git clone -b master https://github.com/brainvisa/anatomist-gpl.git "$CASA_SRC/anatomist-gpl"

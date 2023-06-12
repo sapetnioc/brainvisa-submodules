@@ -32,25 +32,56 @@ Build everything
 
 At the time of this writing, documentation building is failing.
 
-### Get already compiled environment
+### Build a repository for Anatomist
+
+It is necessary to have a complete build environment since the packaging scripts only do packages with `make install...` commands.
+
+Install Conda build
+```
+"$casaconda/bin/mamba" install -y conda-build
+```
+
+Run the package creation recipe
+```
+"$casaconda/bin/mamba" build ~/casaconda/recipe
+```
+
+Publish the resulting repository
+```
+rsync -a --delete "$casaconda/conda/conda-bld/" brainvisa@brainvisa.info:/var/www/html/brainvisa.info_download/conda/
+```
+
+### Install Anatomist from a repository
+
+One can use the repository located in `https://brainvisa.info/download/conda` but it can be replaced by a local directory too, for instance: `file:///home/me/casaconda/conda/conda-bld`.
 
 Install OpenGL libraries (tested on Ubuntu/Windows-WSL2)
 ```
 sudo apt install libgl1-mesa-glx libopengl
 ```
 
-Select a directory
+Select an install directory:
 ```
-casaconda=/somewhere
-```
-
-Download the directory content (about 12 Gb):
-```
-rsync -a brainvisa@brainvisa.info:casaconda/ "$casaconda/"
+conda=/tmp/conda
 ```
 
-## Launch software in an environment
+Install Conda. I recommend installing a version that incorporates Mamba (a really much faster C++ implementation for resolving package dependencies) and that defaults to conda-forge (a very well-maintained community package repository with no legal constraints on use).
+```
+cd /tmp
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+sh Mambaforge-Linux-x86_64.sh -ubp "$conda"
+rm Mambaforge-Linux-x86_64.sh
+```
+
+Install Anatomist. It is possible to substitute the repository located in `https://brainvisa.info/download/conda` by a local directory, for instance: `file:///home/me/casaconda/conda/conda-bld`.
 
 ```
-"$casaconda/bv_env" <command...>
+"$conda/bin/mamba" install -c https://brainvisa.info/download/conda anatomist
+```
+
+
+Activate the conda repository and use Anatomist, Aims or whatever:
+```
+. "$conda/bin/activate"
+anatomist
 ```
