@@ -38,12 +38,12 @@ It is necessary to have a complete build environment since the packaging scripts
 
 Install Conda build
 ```
-"$casaconda/bin/mamba" install -y conda-build
+"$casaconda/conda/bin/mamba" install -y conda-build
 ```
 
 Run the package creation recipe
 ```
-"$casaconda/bin/mamba" build ~/casaconda/recipe
+"$casaconda/conda/bin/mamba" build ~/casaconda/recipe
 ```
 
 Publish the resulting repository
