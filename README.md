@@ -76,7 +76,7 @@ rm Mambaforge-Linux-x86_64.sh
 Install Anatomist. It is possible to substitute the repository located in `https://brainvisa.info/download/conda` by a local directory, for instance: `file:///home/me/casaconda/conda/conda-bld`.
 
 ```
-"$conda/bin/mamba" install -c https://brainvisa.info/download/conda anatomist
+"$conda/bin/mamba" install -c https://brainvisa.info/download/conda -y anatomist
 ```
 
 
