@@ -16,6 +16,8 @@ fi
 
 if [ ! -e "$CONDA" ]; then
     . "$CASA/setup_conda"
+    ln -s ../../../../recipe/casa-distro_activate.sh "$CONDA/etc/conda/activate.d"
+    ln -s ../../../../recipe/casa-distro_deactivate.sh "$CONDA/etc/conda/deactivate.d"
     "$CASA/setup_run_conda"
     "$CASA/setup_run_compiled"
     "$CASA/setup_dev_conda"
